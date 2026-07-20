@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Analyzer from './components/Analyzer'
 import Results from './components/Results'
+import InteractiveBackground from './components/InteractiveBackground'
 import './index.css'
 
 function App() {
@@ -12,19 +13,19 @@ function App() {
     setLoading(true)
     setAnalysisResult(null)
     setComplaintDraft(null)
-    
+
     try {
       const res = await fetch('http://localhost:8000/api/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text })
       })
-      
+
       if (!res.ok) throw new Error("Failed to analyze text")
-      
+
       const data = await res.json()
       setAnalysisResult(data)
-      
+
       // Auto-generate complaint if needed
       if (data.threat_level !== 'Low') {
         const complaintRes = await fetch('http://localhost:8000/api/complaint/generate', {
@@ -48,18 +49,31 @@ function App() {
   }
 
   return (
-    <div className="app-container">
-      <header className="header animate-fade-in">
-        <h1>CyberNyaya</h1>
-        <p>Vernacular Cyber Harassment & Hate Speech Detection Engine</p>
-      </header>
+    <>
+      {/* Organic Liquid Fluid Aurora Canvas Background */}
+      <InteractiveBackground />
 
-      <Analyzer onAnalyze={handleAnalyze} isLoading={loading} />
-      
-      {analysisResult && (
-        <Results result={analysisResult} complaint={complaintDraft} />
-      )}
-    </div>
+      <div className="app-container">
+        <header className="header animate-fade-in">
+          <div className="human-pill">
+            <span className="live-dot"></span>
+            <span>INDIAN CYBER LAW & HATE SPEECH SHIELD</span>
+          </div>
+          <h1 className="main-title">CYBERNYAYA</h1>
+          <p className="main-subtitle">
+            Vernacular Cyber Harassment & Hate Speech Detection Engine
+          </p>
+        </header>
+
+        <main className="main-content-layout">
+          <Analyzer onAnalyze={handleAnalyze} isLoading={loading} />
+
+          {analysisResult && (
+            <Results result={analysisResult} complaint={complaintDraft} />
+          )}
+        </main>
+      </div>
+    </>
   )
 }
 
