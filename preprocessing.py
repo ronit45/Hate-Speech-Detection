@@ -10,16 +10,58 @@ except LookupError:
 
 # Custom concept hierarchy / dictionary for Hinglish slurs and their standard English equivalents
 HINGLISH_MAP = {
-    "gadha": "idiot",
-    "pagal": "stupid",
-    "kutta": "dog",
-    "bakwas": "nonsense",
-    "maar": "kill",
-    "mar": "kill",
-    "dekh": "see",
-    "tod": "break",
-    "goli": "shoot",
-    "jaan": "life"
+    # Pronouns / Generic
+    "tu": "you", "tera": "your", "teri": "your", "mera": "my", "meri": "my",
+    "main": "i", "hum": "we", "iska": "his", "iski": "her", "isko": "him",
+    "woh": "he", "yeh": "this", "tujhe": "you", "tum": "you", "sab": "all",
+    "unko": "them", "inko": "them", "idhar": "here", "udhar": "there",
+    "yahan": "here", "wahan": "there", "kahan": "where", "kaun": "who",
+    "kya": "what", "kaise": "how", "kab": "when", "kyun": "why",
+    
+    # Nouns & Family
+    "bhai": "brother", "bhaiya": "brother", "baap": "father", "maa": "mother",
+    "behan": "sister", "dost": "friend", "ghar": "house", "walo": "family",
+    "log": "people", "banda": "guy", "ladka": "boy", "ladki": "girl",
+    "raat": "night", "din": "day", "aaj": "today", "kal": "tomorrow",
+    "sakal": "face", "muh": "face", "zuban": "tongue", "aukat": "status",
+    "izzat": "respect", "sharam": "shame", "chacha": "uncle", "mama": "uncle",
+    "padosi": "neighbor", "bacha": "child", "billi": "cat", "kutta": "dog",
+    "kutti": "dog", "aurat": "woman", "aadmi": "man",
+    
+    # Adjectives / Insults / Cyberbullying
+    "pagal": "idiot", "gadha": "idiot", "bewakoof": "idiot", "buddhu": "idiot",
+    "chutiya": "idiot", "chutiye": "idiot", "nalayak": "loser", "nalla": "loser", 
+    "chapri": "loser", "gawar": "uneducated", "bhikhari": "beggar", "chor": "thief", 
+    "dhokebaaz": "fraud", "kamina": "scoundrel", "kaminay": "scoundrel",
+    "harami": "bastard", "sala": "bastard", "fattu": "coward", "faltu": "useless",
+    "bekaar": "useless", "ghatiya": "disgusting", "mc": "motherfucker", 
+    "bc": "sisterfucker", "maderchod": "motherfucker", "bhenchod": "sisterfucker",
+    "bhosdike": "asshole", "gaandu": "asshole", "lodu": "asshole", 
+    "bharwa": "pimp", "raand": "whore", "randi": "whore", "tharki": "pervert",
+    "chamcha": "sycophant", "dalal": "broker", "jhantu": "pubic", "tatti": "shit",
+    "besharam": "shameless", "ganda": "dirty", "bakwas": "nonsense", 
+    "bakchodi": "bullshit", "randirona": "crying", 
+    "mast": "great", "badhiya": "great", "zabardast": "great", "khatarnak": "dangerous",
+    "accha": "good", "bura": "bad", "thik": "okay", "kharab": "bad",
+    
+    # Verbs / Actions (Violence & Benign)
+    "maar": "hit", "mar": "hit", "goli": "shoot", "gaad": "bury", "kat": "cut",
+    "phek": "throw", "daba": "choke", "tod": "break", "suja": "swell",
+    "khatam": "finish", "dekh": "see", "bol": "speak", "samajh": "understand",
+    "dikh": "look", "reh": "stay", "udd": "fly", "phod": "break",
+    "chaku": "knife", "bandook": "gun", "thappad": "slap", "lafa": "slap",
+    "laat": "kick", "ghusa": "punch", "pel": "beat", "thok": "shoot",
+    "uda": "blow", "phansi": "hang", "zehar": "poison",
+    "kha": "eat", "pee": "drink", "so": "sleep", "jaa": "go", "aa": "come",
+    "chal": "walk", "bhag": "run", "ruk": "stop", "sun": "listen",
+    "padh": "read", "likh": "write", "khel": "play", "mil": "meet",
+    "ro": "cry", "has": "laugh",
+    
+    # Adverbs / Modifiers
+    "hamesha": "always", "kabhi": "never", "bilkul": "totally", "ekdum": "totally",
+    "maha": "huge", "sabse": "most", "bada": "big", "zinda": "alive",
+    "akela": "alone", "chup": "quiet", "bahut": "very", "thora": "little",
+    "jaldi": "fast", "dheere": "slow", "bahar": "outside", "andar": "inside"
 }
 
 def clean_text(text: str) -> str:

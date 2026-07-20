@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Analyzer from './components/Analyzer'
 import Results from './components/Results'
-import InteractiveBackground from './components/InteractiveBackground'
 import './index.css'
 
 function App() {
@@ -50,9 +49,6 @@ function App() {
 
   return (
     <>
-      {/* Organic Liquid Fluid Aurora Canvas Background */}
-      <InteractiveBackground />
-
       <div className="app-container">
         <header className="header animate-fade-in">
           <div className="human-pill">

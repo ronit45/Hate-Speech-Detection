@@ -37,8 +37,9 @@ try:
     with open(os.path.join(MODEL_DIR, "tfidf_vectorizer.pkl"), "rb") as f:
         tfidf_vectorizer = pickle.load(f)
         
-    # Load PyTorch Model weights
-    mlp_model = ThreatMLP(input_size=2000)
+    # Load PyTorch Model weights dynamically based on TF-IDF vocabulary
+    actual_input_size = len(tfidf_vectorizer.vocabulary_)
+    mlp_model = ThreatMLP(input_dim=actual_input_size)
     mlp_model.load_state_dict(torch.load(os.path.join(MODEL_DIR, "threat_mlp_model.pt"), map_location=device, weights_only=True))
     mlp_model.eval() # Set to evaluation mode
     
@@ -69,11 +70,13 @@ def analyze_text(request: AnalyzeRequest):
         
     processed = preprocess_pipeline(text)
     
+    # Vectorize Text
+    tfidf_vector = tfidf_vectorizer.transform([processed]).toarray()
+    
     # Predict BNS
-    bns_section = nb_model.predict([processed])[0]
+    bns_section = nb_model.predict(tfidf_vector)[0]
     
     # Predict Threat Level (PyTorch)
-    tfidf_vector = tfidf_vectorizer.transform([processed]).toarray()
     tensor_input = torch.FloatTensor(tfidf_vector)
     
     with torch.no_grad():
