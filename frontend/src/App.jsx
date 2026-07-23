@@ -13,8 +13,10 @@ function App() {
     setAnalysisResult(null)
     setComplaintDraft(null)
 
+    const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+
     try {
-      const res = await fetch('http://localhost:8000/api/analyze', {
+      const res = await fetch(`${API_BASE_URL}/api/analyze`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text })
@@ -27,7 +29,7 @@ function App() {
 
       // Auto-generate complaint if needed
       if (data.threat_level !== 'Low') {
-        const complaintRes = await fetch('http://localhost:8000/api/complaint/generate', {
+        const complaintRes = await fetch(`${API_BASE_URL}/api/complaint/generate`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
